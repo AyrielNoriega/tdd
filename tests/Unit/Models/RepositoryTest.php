@@ -2,15 +2,19 @@
 
 namespace Tests\Unit\Models;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Repository;
+use App\Models\User;
 
 class RepositoryTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     */
-    public function test_example(): void
+    use RefreshDatabase;
+
+    public function test_belongs_to_user(): void
     {
-        $this->assertTrue(true);
+        $repository = Repository::factory()->create();
+
+        $this->assertInstanceOf(User::class, $repository->user);
     }
 }
