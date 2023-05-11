@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\User;
 
@@ -15,6 +15,6 @@ class UserTest extends TestCase
     {
         $user = new User;
 
-        $this->assetInstanceOf(Collection::class, $user->repositories);
+        $this->assertInstanceOf(Collection::class, $user->repositories);
     }
 }
