@@ -63,7 +63,7 @@ class RepositoryController extends Controller
             'url' => 'required',
             'description' => 'required'
         ]);
-        
+
         $repository->update($request->all());
 
         return redirect()->route('repositories.edit', $repository);
@@ -72,8 +72,10 @@ class RepositoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Repository $repository)
     {
-        //
+        $repository->delete();
+
+        return redirect()->route('repositories.index');
     }
 }
