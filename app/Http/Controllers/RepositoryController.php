@@ -10,9 +10,11 @@ class RepositoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('repositories.index', [
+            'repositories' => $request->user()->repositories,
+        ]);
     }
 
     /**
