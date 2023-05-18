@@ -6,6 +6,7 @@
             <tr>
                 <th>ID</th>
                 <th>Enlace</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -13,10 +14,15 @@
                 <tr>
                     <td>{{ $repository->id }}</td>
                     <td>{{ $repository->url }}</td>
+                    <td>
+                        <a href="{{ route('repositories.show', $repository) }}">
+                            Ver
+                        </a>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="2">No hay repositorios creados</td>
+                    <td colspan="3">No hay repositorios creados</td>
                 </tr>
             @endforelse
         </tbody>

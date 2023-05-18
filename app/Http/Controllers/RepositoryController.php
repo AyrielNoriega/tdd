@@ -43,9 +43,13 @@ class RepositoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, Repository $repository)
     {
-        //
+        if ($request->user()->id != $repository->user_id) {
+            abort(403);
+        }
+
+        return view('repositories.show', compact('repository'));
     }
 
     /**
