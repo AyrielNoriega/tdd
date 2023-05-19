@@ -55,9 +55,13 @@ class RepositoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, Repository $repository)
     {
-        //
+        if ($request->user()->id != $repository->user_id) {
+            abort(403);
+        }
+
+        return view('repositories.edit', compact('repository'));
     }
 
     /**

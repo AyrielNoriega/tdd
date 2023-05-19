@@ -19,10 +19,15 @@
                             Ver
                         </a>
                     </td>
+                    <td>
+                        <a href="{{ route('repositories.edit', $repository) }}">
+                            Editar
+                        </a>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3">No hay repositorios creados</td>
+                    <td colspan="4">No hay repositorios creados</td>
                 </tr>
             @endforelse
         </tbody>
