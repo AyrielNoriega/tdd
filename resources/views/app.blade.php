@@ -13,10 +13,17 @@
  
     </head>
     <body class="font-sans antialiased">
- 
-        @foreach($repositories as $repository)
-            <h2>{{ $repository->url }}</h2>
-            <p>{{ $repository->description }}</p>
-        @endforeach
+        <ul>
+            @foreach($repositories as $repository)
+                <li>
+                    <img src="{{ $repository->user->profile_photo_url}}" alt="">
+                    <div>
+                    <h2>{{ $repository->url }}</h2>
+                    <p>{{ $repository->description }}</p>
+                    </div>
+                </li>
+            @endforeach
+                
+        </ul>
     </body>
 </html>
