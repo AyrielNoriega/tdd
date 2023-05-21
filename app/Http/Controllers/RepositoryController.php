@@ -45,9 +45,10 @@ class RepositoryController extends Controller
      */
     public function show(Request $request, Repository $repository)
     {
-        if ($request->user()->id != $repository->user_id) {
-            abort(403);
-        }
+        // if ($request->user()->id != $repository->user_id) {
+        //     abort(403);
+        // }
+        $this->authorize('pass', $repository);
 
         return view('repositories.show', compact('repository'));
     }
@@ -55,11 +56,12 @@ class RepositoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Repository $repository)
+    public function edit(Repository $repository)
     {
-        if ($request->user()->id != $repository->user_id) {
-            abort(403);
-        }
+        // if ($request->user()->id != $repository->user_id) {
+        //     abort(403);
+        // }
+        $this->authorize('pass', $repository);
 
         return view('repositories.edit', compact('repository'));
     }
@@ -74,9 +76,10 @@ class RepositoryController extends Controller
             'description' => 'required'
         ]);
 
-        if ($request->user()->id != $repository->user_id) {
-            abort(403);
-        }
+        // if ($request->user()->id != $repository->user_id) {
+        //     abort(403);
+        // }
+        $this->authorize('pass', $repository);
 
         $repository->update($request->all());
 
@@ -86,11 +89,12 @@ class RepositoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Repository $repository)
+    public function destroy(Repository $repository)
     {
-        if ($request->user()->id != $repository->user_id) {
-            abort(403);
-        }
+        // if ($request->user()->id != $repository->user_id) {
+        //     abort(403);
+        // }
+        $this->authorize('pass', $repository);
 
         $repository->delete();
 
